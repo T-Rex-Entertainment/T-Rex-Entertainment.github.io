@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="T-Rex Entertainment — мы создаем уникальные развлекательные проекты, объединяя технологии и креативность.">
+    <title>T-Rex Entertainment</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/logosite.png">
+</head>
+<body>
+    <!-- Динамическая вставка header -->
+    <div id="header-placeholder"></div>
+    <main class="main">
+        <section class="about">
+            <h2>О нас</h2>
+            <p>Мы создаем уникальные развлекательные проекты, объединяя технологии и креативность.</p>
+        </section>
+        
+        <section class="contacts">
+            <h2>Контакты</h2>
+            <p>Email: trex-entertainment@gmail.com</p>
+            <p>Адрес: 1234 Street Name, City, Country</p>
+        </section>
+    </main>
+    <!-- Динамическая вставка footer -->    
+    <div id="footer-placeholder"></div>
+
+    <script src="/script.js"></script>
+    <script>
+        // Функция для вставки header и footer
+        document.addEventListener("DOMContentLoaded", function() {
+            // Вставка header
+            fetch("/ru/header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-placeholder").innerHTML = data;
+                });
+
+            // Вставка footer
+            fetch("/ru/footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-placeholder").innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+    "ru": [
+      {
+        "image": "/images/news1.png",
+        "title": "Открытие нового филиала",
+        "content": "Мы рады сообщить об открытии нового офиса в Санкт-Петербурге.",
+        "date": "14.04.2025"
+      },
+      {
+        "image": "/images/news2.png",
+        "title": "Новая игра в разработке",
+        "content": "Мы начали работу над новой приключенческой игрой.",
+        "date": "14.04.2025"
+      },
+      {
+        "image": "/images/news3.png",
+        "title": "TEST 3",
+        "content": "Ну вот да, как то так.",
+        "date": "14.04.2025"
+      }
+    ],
+    "en": [
+      {
+        "image": "/images/news1.png",
+        "title": "New Branch Opened",
+        "content": "We are excited to announce the opening of our new office in Saint-Petersburg.",
+        "date": "14.04.2025"
+      },
+      {
+        "image": "/images/news2.png",
+        "title": "New Game in Development",
+        "content": "We’ve started developing a new adventure game.",
+        "date": "14.04.2025"
+      }
+    ]
+  }
+  

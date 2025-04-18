@@ -1,1 +1,30 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en,ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="T-Rex Entertainment — we create unique entertainment projects combining technology and creativity.">
+    <title>T-Rex Entertainment</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Функция для получения языка браузера
+            const browserLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
+            const isCIS = ['ru', 'uk', 'be', 'kk', 'ky', 'uz', 'tg', 'az', 'hy', 'mo'].includes(browserLang);
+            const preferredLang = isCIS ? 'ru' : 'en';  // По умолчанию выбираем русский для СНГ
+
+            // Перенаправляем на нужную языковую версию
+            const currentPath = window.location.pathname.split('/').slice(2).join('/');
+            const newPath = `/${preferredLang}/${currentPath || 'index.html'}`;
+
+            // Перенаправляем через небольшой тайм-аут для выполнения всех скриптов
+            setTimeout(() => {
+                window.location.href = newPath;
+            }, 100);
+        });
+    </script>
+</head>
+<body>
+    <p>Redirecting you to the appropriate language version...</p>
+</body>
+</html>

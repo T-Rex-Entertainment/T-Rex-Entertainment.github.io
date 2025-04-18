@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="T-Rex Entertainment — we create unique entertainment projects combining technology and creativity.">
+    <title>T-Rex Entertainment</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/logosite.png">
+</head>
+<body>
+    <!-- Динамическая вставка header -->
+    <div id="header-placeholder"></div>
+
+    <main class="main">  
+      <!-- Баннер -->
+      <div class="banner">
+          <video class="banner__video" autoplay loop muted playsinline>
+              <source src="/videos/primer1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+          <div class="banner__text" id="banner-text">CREATORS OF INTERACTIVE STORIES</div>
+          <button class="banner__button" onclick="scrollToSection(600)">
+              <img src="/images/arrow.png" alt="Arrow" width="40" height="40">
+          </button>
+      </div>
+      
+      <!-- Новости -->
+      <section class="news-section">
+        <h2 id="news-title">News</h2>
+    
+        <!-- Контейнер для новостей -->
+        <div id="news-container" class="news-list">
+        </div>
+      </section>
+
+      <!-- Контакты -->
+      <section class="contacts">
+          <h2>Contacts</h2>
+          <p>Email: trex-entertainment@gmail.com</p>
+          <p>Address: 1234 Street Name, City, Country</p>
+      </section>
+    </main>
+
+    <div id="cookie-consent">
+        <p>The website uses cookies to enhance user experience. <a href="/privacy-policy">Learn more</a>.</p>
+        <button id="accept-cookies">Accept</button>
+        <button id="decline-cookies">Decline</button>
+    </div> 
+
+    <!-- Динамическая вставка footer -->
+    <div id="footer-placeholder"></div>
+    
+    <!-- Кнопка прокрутки вверх -->
+    <button class="scroll-to-top" onclick="scrollToTop()">
+        <img src="/images/arrowup.png" alt="Scroll to top" width="40" height="40">
+    </button>
+    
+    <script src="/script.js"></script>
+    <script>
+        // Функция для вставки header и footer
+        document.addEventListener("DOMContentLoaded", function() {
+            // Вставка header
+            fetch("/en/header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-placeholder").innerHTML = data;
+                });
+
+            // Вставка footer
+            fetch("/en/footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-placeholder").innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

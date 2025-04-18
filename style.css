@@ -1,0 +1,443 @@
+@font-face {
+    font-family: 'DXS Yagi Bold';
+    src: url('/assets/fonts/DXS-Yagi-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Widock Trial Bold';
+    src: url('/assets/fonts/WidockTrial-Bold.otf');
+}
+
+/* Общие настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.header {
+    width: 100%;
+    background-color: #151515;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    max-width: 300px;
+}
+
+.header-nav {
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Позволяет элементам быть в несколько строк */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.header-nav li {
+    position: relative;
+}
+
+.header-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Widock Trial Bold';
+    padding: 10px 20px;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header-nav a:hover {
+    color: #00ff00;
+}
+
+.nav-dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    min-width: 200px;
+    padding: 10px;
+    z-index: 999;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.header__links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.header__links a img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.header__links a:hover img {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.header__language {
+    margin-left: 20px;
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.header__language a {
+    text-decoration: none; /* Убирает подчеркивание */
+    color: #00ff00; /* Зеленый цвет по умолчанию */
+    cursor: pointer; /* Указатель для интерактивных элементов */
+    transition: color 0.3s ease; /* Плавное изменение цвета */
+}
+
+.header__language a:hover {
+    color: #fff; /* Зеленый цвет при наведении */
+}
+
+.header__language a span.active {
+    color: #fff; /* Белый цвет для выбранного языка */
+}
+
+.main {
+    /* Чтобы занимал оставшееся пространство */
+    flex-grow: 1;
+    color: #ccc;
+}
+
+.banner {
+    height: 90vh;
+    min-height: 400px; /* Минимальная высота баннера, чтобы он не становился слишком маленьким */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.banner__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: 'DXS Yagi Bold';
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #000;
+    white-space: nowrap;
+    z-index: 10; /* Убедись, что текст всегда выше баннера */
+}
+
+.banner__button {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.banner__button img {
+    display: block;
+    animation: moveUpDown 1.5s infinite ease-in-out;
+}
+
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.news-section {
+    padding: 80px 10%;
+    text-align: center;
+    background: #151515;
+}
+
+.news-section h2 {
+    font-size: 36px;
+    color: #00ff00;
+    margin-bottom: 20px;
+}
+
+.news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Только для страницы news.html */
+.news-page .news-list {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.news-item {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 1em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.news-item h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.news-item p {
+    font-size: 1rem;
+    color: white;
+}
+
+.news-item .date {
+    font-size: 0.8rem;
+    color: #adadad;
+    margin-bottom: 5px;
+}
+
+.news-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1em;
+}
+
+.about, .contacts {
+    padding: 80px 10%;
+    text-align: center;
+    background-color: #222;
+}
+
+.about h2, .contacts h2 {
+    font-size: 36px;
+    color: #00ff00;
+    margin-bottom: 20px;
+}
+
+.about p, .contacts p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* Стиль для баннера с уведомлением о cookies */
+#cookie-consent {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #151515;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: none;
+    font-family: 'Widock Trial Bold';
+    font-size: 16px;
+    line-height: 1.5; /* Увеличиваем межстрочное расстояние */
+}
+
+#cookie-consent p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 15px; /* Добавляем отступ снизу */
+}
+
+#cookie-consent a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+#cookie-consent a:hover {
+    color: #00ff00;
+}
+
+#cookie-consent button {
+    background-color: #4CAF50;
+    border: none;
+    padding: 8px 20px;
+    color: white;
+    cursor: pointer;
+    margin-left: 15px;
+    font-family: 'Widock Trial Bold';
+    font-size: 14px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+#cookie-consent button#decline-cookies {
+    background-color: #f44336;
+}
+
+#cookie-consent button:hover {
+    background-color: #45a049;
+}
+
+#cookie-consent button#decline-cookies:hover {
+    background-color: #d32f2f;
+}
+
+.footer {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 20px;
+    background: #151515;
+    color: #777;
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.scroll-to-top img {
+    width: 40px;
+    height: 40px;
+    content: url('images/arrowup.png');
+}
+
+/* Адаптивный дизайн для мобильных устройств */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 5%;
+        text-align: center;
+    }
+
+    .header__logo {
+        width: 180px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .header-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-nav ul {
+        display: block; /* Переводим в столбик */
+        gap: 15px;
+    }
+
+    .header__links {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .header__links a img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .header__language {
+        font-size: 14px;
+    }
+
+    .banner {
+        height: 60vh; /* Снижаем высоту баннера для мобильных устройств */
+    }
+
+    .banner__text {
+        font-size: 32px; /* Уменьшаем размер шрифта на мобильных устройствах */
+        white-space: normal;
+        text-align: center;
+    }
+
+    .banner__button {
+        top: 85%;
+    }
+
+    .about, .contacts {
+        padding: 50px 5%;
+    }
+
+    .about h2, .contacts h2 {
+        font-size: 28px;
+    }
+
+    .about p, .contacts p {
+        font-size: 16px;
+    }
+
+    #cookie-consent {
+        font-size: 14px;
+        padding: 15px;
+    }
+
+    #cookie-consent button {
+        padding: 6px 15px;
+        font-size: 13px;
+    }
+
+    .footer {
+        font-size: 14px;
+        padding: 15px;
+    }
+
+    .scroll-to-top {
+        visibility: hidden;
+    }
+}
