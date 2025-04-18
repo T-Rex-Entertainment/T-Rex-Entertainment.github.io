@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="T-Rex Entertainment — we create unique entertainment projects combining technology and creativity.">
+    <title>Page Not Found | T-Rex Entertainment</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/logosite.png">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main error-page">
+        <div class="container">
+            <h1>404</h1>
+            <p>Oops! Page not found.</p>
+            <a href="/en/index.html" class="btn">Return to homepage</a>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("/en/header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-placeholder").innerHTML = data;
+                });
+
+            fetch("/en/footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-placeholder").innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

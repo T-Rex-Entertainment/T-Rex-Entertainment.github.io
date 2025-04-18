@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <style>
+    body { background-color: #222; color: #fff; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Получаем язык браузера
+      const browserLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
+      const isCIS = ['ru', 'uk', 'be', 'kk', 'ky', 'uz', 'tg', 'az', 'hy', 'mo'].includes(browserLang);
+      const preferredLang = isCIS ? 'ru' : 'en';
+
+      // Перенаправление на соответствующую локализованную 404 страницу
+      window.location.replace(`/${preferredLang}/404.html`);
+    });
+  </script>
+</head>
+<body>
+  <p>Redirecting to your language version...</p>
+</body>
+</html>
