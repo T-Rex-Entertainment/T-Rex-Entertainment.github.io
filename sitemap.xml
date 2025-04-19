@@ -1,66 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <!-- Главная страница -->
-    <url>
-        <loc>https://t-rex-entertainment.github.io/</loc>
-        <lastmod>2025-04-19</lastmod>
-        <priority>1.00</priority>
-    </url>
-
-    <!-- Страница на английском языке -->
-    <url>
-        <loc>https://t-rex-entertainment.github.io/en/</loc>
-        <lastmod>2025-04-19</lastmod>
-        <priority>0.80</priority>
-    </url>
-
-    <!-- Страница на русском языке -->
-    <url>
-        <loc>https://t-rex-entertainment.github.io/ru/</loc>
-        <lastmod>2025-04-19</lastmod>
-        <priority>0.80</priority>
-    </url>
-
-    <!-- Страница "404" на русском -->
-    <url>
-        <loc>https://t-rex-entertainment.github.io/ru/404.html</loc>
-        <lastmod>2025-04-19</lastmod>
-        <priority>0.50</priority>
-    </url>
-
-    <!-- Страница "404" на английском -->
-    <url>
-        <loc>https://t-rex-entertainment.github.io/en/404.html</loc>
-        <lastmod>2025-04-19</lastmod>
-        <priority>0.50</priority>
-    </url>
-
-    <!-- Страница "Blog" на русском -->
-    <url>
-        <loc>https://t-rex-entertainment.github.io/ru/blog.html</loc>
-        <lastmod>2025-04-19</lastmod>
-        <priority>0.70</priority>
-    </url>
-
-    <!-- Страница "About Us" на русском -->
-    <url>
-        <loc>https://t-rex-entertainment.github.io/ru/about-us.html</loc>
-        <lastmod>2025-04-19</lastmod>
-        <priority>0.70</priority>
-    </url>
-
-    <!-- Страница "Blog" на английском -->
-    <url>
-        <loc>https://t-rex-entertainment.github.io/en/blog.html</loc>
-        <lastmod>2025-04-19</lastmod>
-        <priority>0.70</priority>
-    </url>
-
-    <!-- Страница "About Us" на английском -->
-    <url>
-        <loc>https://t-rex-entertainment.github.io/en/about-us.html</loc>
-        <lastmod>2025-04-19</lastmod>
-        <priority>0.70</priority>
-    </url>
-
+  <url>
+    <loc>https://t-rex-entertainment.github.io/</loc>
+    <lastmod>2025-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://t-rex-entertainment.github.io/en/</loc>
+    <lastmod>2025-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://t-rex-entertainment.github.io/ru/</loc>
+    <lastmod>2025-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://t-rex-entertainment.github.io/en/blog.html</loc>
+    <lastmod>2025-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://t-rex-entertainment.github.io/ru/blog.html</loc>
+    <lastmod>2025-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://t-rex-entertainment.github.io/en/about-us.html</loc>
+    <lastmod>2025-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://t-rex-entertainment.github.io/ru/about-us.html</loc>
+    <lastmod>2025-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
