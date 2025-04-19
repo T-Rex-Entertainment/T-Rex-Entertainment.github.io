@@ -1,0 +1,7 @@
+# Разрешение для всех поисковых систем индексировать все страницы сайта
+User-agent: *
+Disallow: /404.html
+Allow: /
+
+# Указание на расположение sitemap
+Sitemap: https://t-rex-entertainment.github.io/sitemap.xml
