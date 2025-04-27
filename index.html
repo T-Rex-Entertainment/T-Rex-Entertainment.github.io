@@ -54,7 +54,7 @@
 
             // Перенаправляем на нужную языковую версию
             const currentPath = window.location.pathname.split('/').slice(2).join('/');
-            const newPath = `/${preferredLang}/${currentPath || 'index.html'}`;
+            const newPath = `/${preferredLang}/${currentPath}`;
 
             // Перенаправляем через небольшой тайм-аут для выполнения всех скриптов
             setTimeout(() => {
