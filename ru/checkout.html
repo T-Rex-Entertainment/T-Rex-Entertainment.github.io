@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа | T-Rex Entertainment</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/favicon.ico">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main">
+        <section class="checkout-section">
+            <h1>Оформление заказа</h1>
+
+            <form class="checkout-form" onsubmit="submitCheckout(event)">
+                <label>
+                    Имя
+                    <input type="text" required placeholder="Введите имя">
+                </label>
+
+                <label>
+                    Email
+                    <input type="email" required placeholder="Введите email">
+                </label>
+
+                <label>
+                    Способ оплаты
+                    <select required>
+                        <option value="">Выберите способ оплаты</option>
+                        <option>Банковская карта</option>
+                        <option>Электронный кошелек</option>
+                        <option>Подарочный код</option>
+                    </select>
+                </label>
+
+                <div id="checkout-total" class="checkout-total"></div>
+
+                <button type="submit" class="cart-btn cart-btn-main">
+                    Подтвердить заказ
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("/ru/header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-placeholder").innerHTML = data;
+                    updateCartCount();
+                });
+
+            fetch("/ru/footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-placeholder").innerHTML = data;
+                });
+
+            renderCheckoutTotal();
+        });
+    </script>
+</body>
+</html>

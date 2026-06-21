@@ -50,47 +50,70 @@
             <h2>Наши игры</h2>
 
             <div class="news-list">
-                <article class="news-item">
+                <article class="news-item game-card">
+                    <img src="/images/news1.png" alt="Kassandra" class="news-image">
+
                     <h2>Kassandra</h2>
                     <p class="news-date">Жанр: визуальная новелла, мистика</p>
+
                     <p>
                         Сюжетная визуальная новелла, посвященная истории загадочной
-                        девушки по имени Кассандра. Игрок принимает решения,
-                        влияющие на развитие сюжета и взаимоотношения между персонажами.
+                        девушки по имени Кассандра.
                     </p>
-                    <p>
-                        Проект ориентирован на атмосферное повествование,
-                        проработку персонажей и наличие нескольких вариантов финала.
-                    </p>
+
+                    <p class="game-price">Цена: 599 ₽</p>
+
+                    <button class="cart-btn add-to-cart"
+                            data-id="1"
+                            data-title="Kassandra"
+                            data-price="599"
+                            data-image="/images/news1.png">
+                        Добавить в корзину
+                    </button>
                 </article>
 
-                <article class="news-item">
+                <article class="news-item game-card">
+                    <img src="/images/news2.png" alt="Echoes of the Night" class="news-image">
+
                     <h2>Echoes of the Night</h2>
                     <p class="news-date">Жанр: RPG, приключение</p>
+
                     <p>
                         Ролевая игра с элементами исследования окружающего мира
-                        и нелинейного развития событий. Игроку предстоит выполнять
-                        задания, взаимодействовать с персонажами и постепенно
-                        раскрывать тайны игрового мира.
+                        и нелинейного развития событий.
                     </p>
-                    <p>
-                        Особое внимание уделяется развитию персонажа,
-                        системе выбора и исследованию локаций.
-                    </p>
+
+                    <p class="game-price">Цена: 799 ₽</p>
+
+                    <button class="cart-btn add-to-cart"
+                            data-id="2"
+                            data-title="Echoes of the Night"
+                            data-price="799"
+                            data-image="/images/news2.png">
+                        Добавить в корзину
+                    </button>
                 </article>
 
-                <article class="news-item">
+                <article class="news-item game-card">
+                    <img src="/images/news3.png" alt="Last Frontier" class="news-image">
+
                     <h2>Last Frontier</h2>
                     <p class="news-date">Жанр: приключенческий квест</p>
+
                     <p>
                         Приключенческий проект, посвященный исследованию неизведанных
-                        территорий и поиску древних артефактов. Игрок решает
-                        головоломки, выполняет задания и продвигается по сюжетной линии.
+                        территорий и поиску древних артефактов.
                     </p>
-                    <p>
-                        Основной акцент сделан на атмосфере исследования,
-                        логических задачах и последовательном раскрытии истории.
-                    </p>
+
+                    <p class="game-price">Цена: 699 ₽</p>
+
+                    <button class="cart-btn add-to-cart"
+                            data-id="3"
+                            data-title="Last Frontier"
+                            data-price="699"
+                            data-image="/images/news3.png">
+                        Добавить в корзину
+                    </button>
                 </article>
             </div>
         </section>
@@ -108,6 +131,7 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("header-placeholder").innerHTML = data;
+                    updateCartCount();
                 });
 
             // Вставка footer

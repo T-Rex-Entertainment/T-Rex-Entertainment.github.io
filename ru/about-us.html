@@ -52,8 +52,8 @@
         
         <section class="contacts">
             <h2>Контакты</h2>
-            <p>Email: trex-entertainment@gmail.com</p>
-            <p>Адрес: 1234 Street Name, City, Country</p>
+            <p>Email: trexentertainment.biz@gmail.com</p>
+            <p>Адрес: Петергофское шоссе, 51, Санкт-Петербург, 198322</p>
         </section>
     </main>
     <!-- Динамическая вставка footer -->    
@@ -68,6 +68,7 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("header-placeholder").innerHTML = data;
+                    updateCartCount();
                 });
 
             // Вставка footer

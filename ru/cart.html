@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина | T-Rex Entertainment</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/favicon.ico">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main">
+        <section class="cart-section">
+            <h1>Корзина</h1>
+
+            <p class="cart-description">
+                Здесь отображаются игры, выбранные пользователем перед оформлением заказа.
+            </p>
+
+            <div id="cart-container"></div>
+
+            <div class="cart-actions">
+                <a href="/ru/our-games" class="cart-btn">Продолжить покупки</a>
+                <button class="cart-btn" onclick="clearCart()">Очистить корзину</button>
+                <a href="/ru/checkout" class="cart-btn cart-btn-main">Оформить заказ</a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("/ru/header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-placeholder").innerHTML = data;
+                    updateCartCount();
+                });
+
+            fetch("/ru/footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-placeholder").innerHTML = data;
+                });
+
+            renderCart();
+        });
+    </script>
+</body>
+</html>
