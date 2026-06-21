@@ -445,6 +445,20 @@ function renderCheckoutTotal() {
     totalBlock.innerHTML = `<h2>Итого к оплате: ${total} ₽</h2>`;
 }
 
+function generateGameKey(gameTitle, index) {
+    const prefix = gameTitle
+        .toUpperCase()
+        .replace(/[^A-ZА-Я0-9]/g, '')
+        .slice(0, 3);
+
+    const randomPart = Math.random()
+        .toString(36)
+        .substring(2, 8)
+        .toUpperCase();
+
+    return `${prefix}-TRX-${2025 + index}-${randomPart}`;
+}
+
 function submitCheckout(event) {
     event.preventDefault();
 
@@ -455,13 +469,67 @@ function submitCheckout(event) {
         return;
     }
 
-    localStorage.removeItem('cart');
-    updateCartCount();
-    showNotification('Заказ успешно оформлен');
+    if (typeof emailjs === 'undefined') {
+        showNotification('Ошибка подключения EmailJS');
+        return;
+    }
 
-    setTimeout(() => {
-        window.location.href = '/ru/our-games';
-    }, 1500);
+    const form = event.target;
+
+    const userName = form.querySelector('input[type="text"]').value;
+    const userEmail = form.querySelector('input[type="email"]').value;
+
+    const orderItems = cart.map(item => {
+        return `${item.title} — ${item.quantity} шт. × ${item.price} ₽`;
+    }).join('\n');
+
+    const orderTotal = cart.reduce((sum, item) => {
+        return sum + item.price * item.quantity;
+    }, 0);
+
+    const gameKeys = cart.map((item, index) => {
+        const keys = [];
+
+        for (let i = 0; i < item.quantity; i++) {
+            keys.push(`${item.title}: ${generateGameKey(item.title, index + i)}`);
+        }
+
+        return keys.join('\n');
+    }).join('\n');
+
+    const templateParams = {
+        user_name: userName,
+        user_email: userEmail,
+        to_email: userEmail,
+        order_items: orderItems,
+        order_total: orderTotal,
+        game_keys: gameKeys
+    };
+
+    emailjs.init({
+        publicKey: EMAILJS_PUBLIC_KEY
+    });
+
+    showNotification('Отправляем ключи на почту...');
+
+    emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams
+    ).then(() => {
+        localStorage.removeItem('cart');
+        renderCheckoutTotal();
+        updateCartCount();
+
+        showNotification('Заказ оформлен. Ключи отправлены на почту');
+
+        setTimeout(() => {
+            window.location.href = '/ru/our-games';
+        }, 2000);
+    }).catch((error) => {
+        console.error('EmailJS error:', error);
+        showNotification('Ошибка отправки письма');
+    });
 }
 
 function updateGameButtons() {
@@ -480,3 +548,7 @@ function updateGameButtons() {
         }
     });
 }
+
+const EMAILJS_PUBLIC_KEY = 'ACAEP5eNXrgfK9kV0';
+const EMAILJS_SERVICE_ID = 'service_qxht6ib';
+const EMAILJS_TEMPLATE_ID = 'template_vmsdlwn';
