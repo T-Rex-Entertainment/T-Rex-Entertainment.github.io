@@ -53,7 +53,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap; /* Позволяет элементам быть в несколько строк */
-    width: 100%;
     box-sizing: border-box;
 }
 
@@ -69,7 +68,8 @@ body {
     position: relative;
 }
 
-.header-nav a {
+.header-nav a,
+.dropdown-toggle {
     color: white;
     text-decoration: none;
     font-size: 18px;
@@ -77,9 +77,11 @@ body {
     padding: 10px 20px;
     display: block;
     transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
 }
 
-.header-nav a:hover {
+.header-nav a:hover, 
+.dropdown-toggle:hover {
     color: #00ff00;
 }
 
@@ -503,9 +505,9 @@ body {
 .header__cart a {
     color: white;
     text-decoration: none;
-    font-size: 16   px;
+    font-size: 16px;
     font-family: 'Widock Trial Bold';
-    padding: 10px   10px;
+    padding: 10px 10px;
     position: relative;
     display: inline-block;
     transition: color 0.3s;
@@ -757,87 +759,458 @@ body {
     }
 }
 
-/* Адаптивный дизайн для мобильных устройств */
+/* ===== Header и бургер-меню ===== */
+.burger-btn {
+    display: none;
+    background: none;
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    font-size: 26px;
+    line-height: 1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.burger-btn:hover {
+    background-color: #00ff00;
+    color: #151515;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* ===== Мобильная версия ===== */
 @media (max-width: 768px) {
     .header {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr auto;
         align-items: center;
-        padding: 10px 5%;
-        text-align: center;
+        padding: 12px 16px;
+        gap: 0;
+    }
+
+    .header > a {
+        grid-column: 1;
+        justify-self: start;
     }
 
     .header__logo {
-        width: 180px;
+        width: 170px;
         height: auto;
-        margin-bottom: 10px;
+        max-width: 75%;
+        margin: 0;
+    }
+
+    .burger-btn {
+        grid-column: 2;
+        justify-self: end;
+        display: block;
+        z-index: 10;
+        transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .burger-btn:hover {
+        transform: scale(1.05);
+    }
+
+    .header-menu {
+        grid-column: 1 / -1;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transform: translateY(-10px);
+        padding-top: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease, padding-top 0.3s ease;
+    }
+
+    .header-menu.active {
+        max-height: 600px;
+        opacity: 1;
+        transform: translateY(0);
+        padding-top: 20px;
     }
 
     .header-nav {
+        width: 100%;
+        padding: 0;
+    }
+
+    .header-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .header-nav a,
+    .header__cart a,
+    .dropdown-toggle {
+        font-size: 16px;
+        padding: 10px 12px;
+        text-align: center;
+    }
+
+    .nav-dropdown {
+        display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .header-nav ul {
-        display: block; /* Переводим в столбик */
-        gap: 15px;
+    .nav-dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background-color: transparent;
+        padding: 0;
+        min-width: auto;
+        margin-top: 0;
+
+        display: grid;
+        grid-template-rows: 0fr;
+        overflow: hidden;
+
+        transition: grid-template-rows 0.35s ease, margin-top 0.3s ease;
+    }
+
+    .nav-dropdown.open .nav-dropdown-menu {
+        grid-template-rows: 1fr;
+        margin-top: 12px;
+    }
+
+    .nav-dropdown-menu ul {
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-dropdown-menu a {
+        font-size: 15px !important;
+        color: #cccccc;
+        opacity: 0.9;
+    }
+
+    .nav-dropdown-menu a:hover {
+        color: #00ff00;
+    }
+
+    .dropdown-toggle {
+        display: inline-block;
+    }
+
+    .header-right {
+        flex-direction: column;
+        gap: 12px;
     }
 
     .header__links {
-        flex-direction: row;
-        gap: 5px;
+        margin: 0;
     }
 
-    .header__links a img {
-        width: 30px;
-        height: 30px;
+    .header__cart {
+        margin: 0 !important;
     }
 
     .header__language {
-        font-size: 14px;
+        margin: 0 !important;
+        justify-content: center;
+    }
+
+    .cart-count-badge {
+        top: -8px;
+        right: -10px;
     }
 
     .banner {
-        height: 60vh; /* Снижаем высоту баннера для мобильных устройств */
+        height: 55vh;
+        min-height: 320px;
     }
 
     .banner__text {
-        font-size: 32px; /* Уменьшаем размер шрифта на мобильных устройствах */
+        font-size: 28px;
         white-space: normal;
         text-align: center;
+        width: 90%;
     }
 
-    .banner__button {
-        top: 85%;
-    }
-
-    .about, .contacts {
+    .news-section {
         padding: 50px 5%;
     }
 
-    .about h2, .contacts h2 {
+    .news-section h2 {
         font-size: 28px;
     }
 
-    .about p, .contacts p {
-        font-size: 16px;
+    .news-list {
+        grid-template-columns: 1fr;
+    }
+
+    .news-item {
+        padding: 18px;
+    }
+
+    .news-item h2 {
+        font-size: 22px;
+    }
+
+    .news-item p {
+        font-size: 15px;
+    }
+
+    .cart-section {
+        margin: 35px auto;
+        padding: 25px 16px;
+    }
+
+    .cart-section h1 {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .cart-description {
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 25px;
+    }
+
+    .cart-table {
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+    }
+
+    .cart-row.cart-header {
+        display: none;
+    }
+
+    .cart-row {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #151515;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 18px;
+        margin-bottom: 16px;
+    }
+
+    .cart-row > div {
+        margin-bottom: 0;
+        font-size: 15px;
+    }
+
+    .cart-row > div:nth-child(1) {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .cart-row > div:nth-child(2)::before {
+        content: "Цена: ";
+        color: #00ff00;
+        font-weight: bold;
+    }
+
+    .cart-row > div:nth-child(3)::before {
+        content: "Количество: ";
+        color: #00ff00;
+        font-weight: bold;
+    }
+
+    .cart-row > div:nth-child(4)::before {
+        content: "Сумма: ";
+        color: #00ff00;
+        font-weight: bold;
+    }
+
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 3px;
+    }
+
+    .quantity-controls::before {
+        display: none;
+    }
+
+    .quantity-controls button {
+        width: 34px;
+        height: 34px;
+    }
+
+    .cart-remove {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .cart-total {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .cart-total h2 {
+        font-size: 24px;
+        color: #ffffff;
+    }
+
+    .cart-actions {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .cart-actions .cart-btn,
+    .cart-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .checkout-section {
+        margin: 40px auto;
+        padding: 20px 12px;
+        width: 100%;
+    }
+
+    .checkout-form {
+        padding: 20px;
+    }
+
+    .checkout-form input,
+    .checkout-form select {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .notification {
+        top: 120px;
+        right: 10px;
+        left: 10px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .confirm-modal {
+        padding: 25px 18px;
+    }
+
+    .confirm-modal-buttons {
+        flex-direction: column;
+    }
+
+    .contacts {
+        padding: 50px 5%;
+    }
+
+    .contacts h2 {
+        font-size: 28px;
+    }
+
+    .contacts p {
+        font-size: 15px;
     }
 
     #cookie-consent {
-        font-size: 14px;
-        padding: 15px;
+        padding: 15px 10px;
     }
 
     #cookie-consent button {
-        padding: 6px 15px;
-        font-size: 13px;
+        margin: 8px 5px 0;
+    }
+}
+
+/* ===== Desktop ===== */
+@media (min-width: 769px) {
+    .header {
+        display: grid !important;
+        grid-template-columns: 260px 1fr 330px !important;
+        align-items: center !important;
+        padding: 10px 25px !important;
+        flex-wrap: nowrap !important;
     }
 
-    .footer {
-        font-size: 14px;
-        padding: 15px;
+    .header > a {
+        justify-self: start !important;
     }
 
-    .scroll-to-top {
-        visibility: hidden;
+    .header__logo {
+        height: 100px !important;
+        max-width: 300px !important;
+    }
+
+    .burger-btn {
+        display: none !important;
+    }
+
+    .header-menu {
+        display: contents !important;
+    }
+
+    .header-menu .col-md-8,
+    .header-menu .col-xl-4 {
+        grid-column: 2 !important;
+        justify-self: center !important;
+        width: auto !important;
+    }
+
+    .header-nav {
+        width: auto !important;
+        padding: 0 !important;
+    }
+
+    .header-nav ul {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 35px !important;
+    }
+
+    .header-nav a,
+    .dropdown-toggle {
+        white-space: nowrap !important;
+        font-size: 18px !important;
+        padding: 10px 8px !important;
+    }
+
+    .header-right {
+        grid-column: 3 !important;
+        justify-self: end !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 15px !important;
+        position: static !important;
+        margin-left: 0 !important;
+    }
+
+    .header__links {
+        margin-top: 0 !important;
+    }
+
+    .header__cart,
+    .header__language {
+        margin-left: 0 !important;
     }
 }

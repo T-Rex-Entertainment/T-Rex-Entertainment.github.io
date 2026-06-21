@@ -2,63 +2,65 @@
     <a href="/ru">
         <img src="/images/logo.png" alt="T-Rex-Entertainment" class="header__logo">
     </a>
-    <div class="col-md-8 col-xl-4">
-        <nav class="header-nav">
-          <ul data-depth="0">
-            <li class="nav-dropdown">
-              <a href="/ru/about-us">
-                О НАС
-              </a>
-              <div class="nav-dropdown-menu">
-                <ul data-depth="1">
-                  <li>
-                    <a href="/ru/about-us">
-                      Наша Студия
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/ru/team">
-                      Наша Команда
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/ru/blog">
-                      Наш Блог
-                    </a>
-                  </li>
+
+    <button class="burger-btn" id="burger-btn" aria-label="Открыть меню">
+        ☰
+    </button>
+
+    <div class="header-menu" id="header-menu">
+        <div class="col-md-8 col-xl-4">
+            <nav class="header-nav">
+                <ul data-depth="0">
+                    <li class="nav-dropdown">
+                        <li class="nav-dropdown">
+                            <span class="dropdown-toggle">
+                                О НАС ▼
+                            </span>
+
+                            <div class="nav-dropdown-menu">
+                                <ul data-depth="1">
+                                    <li><a href="/ru/about-us">Наша Студия</a></li>
+                                    <li><a href="/ru/team">Наша Команда</a></li>
+                                    <li><a href="/ru/blog">Наш Блог</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                    <li>
+                        <a href="/ru/our-games">НАШИ ИГРЫ</a>
+                    </li>
+
+                    <li class="nav-dropdown">
+                        <a href="/ru/jobs">ПРИСОЕДИНЯЙТЕСЬ К НАМ</a>
+                    </li>
                 </ul>
-              </div>
-            </li>
-            <li>
-              <a href="/ru/our-games">
-                НАШИ ИГРЫ
-              </a>
-            </li>
-            <li class="nav-dropdown">
-              <a href="/ru/collaboration">
-                ПРИСОЕДИНЯЙТЕСЬ К НАМ
-              </a>
-            </li>
-          </ul>
-        </nav>
-    </div>                   
-    <div style="display: flex; align-items: center;">
-        <div class="header__links">
-            <a href="https://t.me/+Q6rIv-J3vDg1MzQy"><img src="/images/telegram.png" alt="Telegram" width="35" height="35"></a>
-            <a href="#"><img src="/images/facebook.png" alt="Facebook" width="35" height="35"></a>
-            <a href="https://youtube.com/@T-RexEntertainment"><img src="/images/youtube.png" alt="YouTube" width="35" height="35"></a>
+            </nav>
         </div>
 
-        <div class="header__cart" style="margin-left: 20px;">
-            <a href="/ru/cart">
-                КОРЗИНА
-                <span id="cart-count-badge" class="cart-count-badge">0</span>
-            </a>
-        </div>
+        <div class="header-right">
+            <div class="header__links">
+                <a href="https://t.me/+Q6rIv-J3vDg1MzQy">
+                    <img src="/images/telegram.png" alt="Telegram" width="35" height="35">
+                </a>
+                <a href="#">
+                    <img src="/images/facebook.png" alt="Facebook" width="35" height="35">
+                </a>
+                <a href="https://youtube.com/@T-RexEntertainment">
+                    <img src="/images/youtube.png" alt="YouTube" width="35" height="35">
+                </a>
+            </div>
 
-        <div class="header__language" style="margin-left: 20px;">
-          <a href="/ru"><span class="active" id="lang-ru">RU</span></a> / 
-          <a href="/en"><span id="lang-en">ENG</span></a>
+            <div class="header__cart">
+                <a href="/ru/cart">
+                    КОРЗИНА
+                    <span id="cart-count-badge" class="cart-count-badge hidden">0</span>
+                </a>
+            </div>
+
+            <div class="header__language">
+                <a href="/ru"><span class="active" id="lang-ru">RU</span></a> / 
+                <a href="/en"><span id="lang-en">ENG</span></a>
+            </div>
         </div>
     </div>
 </header>

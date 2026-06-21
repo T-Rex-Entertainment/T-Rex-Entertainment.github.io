@@ -552,3 +552,27 @@ function updateGameButtons() {
 const EMAILJS_PUBLIC_KEY = 'ACAEP5eNXrgfK9kV0';
 const EMAILJS_SERVICE_ID = 'service_qxht6ib';
 const EMAILJS_TEMPLATE_ID = 'template_vmsdlwn';
+
+document.addEventListener('click', function(event) {
+    const burgerBtn = event.target.closest('#burger-btn');
+
+    if (burgerBtn) {
+        const menu = document.getElementById('header-menu');
+
+        if (menu) {
+            menu.classList.toggle('active');
+        }
+    }
+});
+
+document.addEventListener('click', function(e) {
+
+    const toggle = e.target.closest('.dropdown-toggle');
+
+    if (!toggle) return;
+
+    const dropdown = toggle.closest('.nav-dropdown');
+
+    dropdown.classList.toggle('open');
+
+});
